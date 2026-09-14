@@ -1,9 +1,0 @@
-{
-  "name": "cell-wrapping-actuator-simulator-pages",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "test": "node --test tests/*.test.js",
-    "check": "node --check assets/simulator-ui.js && node --check assets/result-view.js && node --check assets/simulator-core-v0.2.js"
-  }
-}

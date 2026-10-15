@@ -1,7 +1,7 @@
 {
   "version": "0.4.0",
-  "sourceCommit": "0be9e568d7ec9ca6869b7d65eb229eb806b03956",
-  "testsPassed": 146,
+  "sourceCommit": "2613de08e3eddf33fbdb19c23522cf56da7bd48b",
+  "testsPassed": 147,
   "model": "finite-constant-curvature-prescribed-pose",
   "calibration": "historical-provisional-v1"
 }

@@ -1,14 +1,17 @@
 {
-  "version": "0.5.0",
-  "sourceCommit": "ab0fcdb9661557c1e705a9fc450590cf9dd128c0",
-  "testsPassed": 209,
+  "version": "0.6.0",
+  "sourceCommit": "16e20bf3c87528d86966f8d28151552eb271f8ff",
+  "testsPassed": 238,
+  "testFilesPassed": 31,
   "model": "finite-constant-curvature-prescribed-pose",
   "calibration": "historical-provisional-v1",
   "features": [
-    "inverse-design",
+    "fixed-hinge-geometry-search",
+    "panel-and-base-sizing",
     "coupled-integer-actuator-sizing",
-    "minimum-target-mode",
-    "finite-arc-contact-candidates",
-    "explicit-contact-diagnostics"
+    "adjacent-support-width-checks",
+    "shared-prescribed-geometry",
+    "stale-design-invalidation",
+    "bounded-parallel-count-1-to-1000"
   ]
 }

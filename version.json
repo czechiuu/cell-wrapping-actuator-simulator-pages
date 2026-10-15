@@ -1,7 +1,14 @@
 {
-  "version": "0.4.0",
-  "sourceCommit": "2613de08e3eddf33fbdb19c23522cf56da7bd48b",
-  "testsPassed": 147,
+  "version": "0.5.0",
+  "sourceCommit": "ab0fcdb9661557c1e705a9fc450590cf9dd128c0",
+  "testsPassed": 209,
   "model": "finite-constant-curvature-prescribed-pose",
-  "calibration": "historical-provisional-v1"
+  "calibration": "historical-provisional-v1",
+  "features": [
+    "inverse-design",
+    "coupled-integer-actuator-sizing",
+    "minimum-target-mode",
+    "finite-arc-contact-candidates",
+    "explicit-contact-diagnostics"
+  ]
 }

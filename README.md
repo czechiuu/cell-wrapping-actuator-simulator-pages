@@ -1,13 +1,62 @@
-# Cell Wrapping Actuator Simulator v0.8
+# Cell Wrapping Actuator Simulator · v0.8.1
 
-[Open v0.8](https://czechiuu.github.io/cell-wrapping-actuator-simulator-pages/) · [Open frozen v0.7](https://czechiuu.github.io/cell-wrapping-actuator-simulator-pages/versions/v0.7/)
+[打开 v0.8.1 仿真器](https://czechiuu.github.io/cell-wrapping-actuator-simulator-pages/) · [打开冻结的 v0.7](https://czechiuu.github.io/cell-wrapping-actuator-simulator-pages/versions/v0.7/)
 
-Source commit: 7bb5108fc77cd65e4fdd18cbfd094cf580591433
+用于 Pd–Au 主动铰链和刚性面板包裹球形对象的设计检查。当前模型计算**规定姿态下的条件反力**，不联合求解自然姿态、细胞变形与未知接触集合，不是有限元仿真。
 
-[Version 0.8 model and limitations](docs/model-v0.8.md) · [Version 0.8 validation](docs/validation-v0.8.md)
+## v0.8.1：四臂严格对称与真实金属条阵
 
-[Version 0.7 frozen documentation](https://github.com/czechiuu/cell-wrapping-actuator-simulator/blob/917c536fc8612db07127807db4f816e97f38bfbd/README.md)
+当前逆向设计采用硬性 C4 旋转对称：底板为正方形，四臂同编号面板与铰链的尺寸、转角、材料/驱动、单条宽度、带宽上限、目标压强与整数条数必须一致。同一条臂的第1、第2、第3块面板仍可有不同宽度、长度与转角。搜索只优化一个代表臂，再按90°旋转重建全器件，不能四臂独立求解后平均。输入存在旧的不对称覆盖时明确诊断，不会静默丢弃或标为合格方案。
 
-The complete previous Pages tree 1f24442f3897e0144c53aba74c8c773ca8b95a4b is preserved byte-for-byte at versions/v0.7/, including its HTML, JavaScript, Worker, CSS and documentation. Older root assets and documentation remain available for existing tabs. Root links with ?v=0.7 or ?v=0.7.0 redirect to the frozen application.
+3D 铰链按实际 N 条、实际单条宽度和条间隙绘制；间隙和边缘留白不再画成金属。排布带宽只是上限，未知或无效条数只显示线框包络。此修复不改变力学模型。完整规则见 [v0.8.1 模型说明](docs/model-v0.8.1.md) 和 [v0.8.1 验证记录](docs/validation-v0.8.1.md)。
 
-v0.8 requires each arm's actual discrete contact points to progress from the bottom toward at least 90 degrees. This is not continuous surface coverage, natural equilibrium, cell deformation, path collision validation, or manufacturing validation. The D600 example is separate from the unresolved D2000 / 300 Pa target.
+## v0.8：四臂切点须从底部推进到侧面
+
+等压合格不再只检查压力。四条臂分别要求每块面板的**实际有效球面切点**按面板顺序向上推进，末端切点默认达到从底极起算的90°（赤道）；独立数值角容差为0.00001°。报告各臂首末切点极角、相邻切点位置、角跨度及对应子午线弧长。这是离散点接触的延伸范围，不是连续包覆面积、面积覆盖率或臂间缝隙优化。
+
+v0.7的2000 µm / 300 Pa近底部等压例在新默认判据下不合格。另有一个**不同输入的600 µm球体验证例**：四臂、每臂3板、底板240×240 µm、板长150 µm，固定原铰链/材料/驱动；整数条数7/4/1，逐板约300 Pa，实际切点37.903826°、73.832658°、100.906222°，通过支撑、有限实体间隙和端态碰撞检查。它不构成2000 µm目标已解决的证据。对2000 µm / 300 Pa的当前有界复核仍未找到同时通过新几何门槛与±5%压力要求的方案，详见[v0.8模型与验证边界](docs/model-v0.8.md)。
+
+## 本次计算路线
+
+以《PdAu 完整路线版》为依据：材料截面 → 自由曲率 → 规定转角 → 输出铰链矩 → 一致运动学 Jacobian → 接触反力 → 名义面板面积压强。详见 [v0.4 模型与标定约定](docs/model-v0.4.md)。
+
+- Pd 在下、Au 在上，厚度坐标从 Pd 底面起，正曲率朝 Au。
+- 完整复合截面 EI 保留平行轴项；Mout = EI(κ₀ − q/l)。
+- 几何采用有限长常曲率铰链弧段，力臂由同一运动学的虚功导数计算。
+- 整块有限面板与球体检查间隙和穿透；负反力、奇异力臂、不相容接触或无效平衡不输出有效压强，保留力矩和试算诊断。
+- 压强为 F/(面板长×宽)，不是局部压力场或真实接触面积平均压力。不能将各面板压力直接相加。
+
+## 界面
+
+“逆向设计”默认采用“等压设计（目标±5%）”。固定铰链有效长度、单条金属宽度、可用带宽和材料 / 驱动，在明确范围内联合搜索面板、底板尺寸及整数并联条数。每块面板独立满足目标容差，例如300 Pa对应285–315 Pa；平均压强不能代替逐板验收。搜索在独立 Worker 中运行，可保留未达标的近似诊断，但不能将其当作合格方案应用。
+
+流程为“搜索等压几何方案” → “选择此等压候选” → “应用几何与整数配置”。选择和应用保留候选的精确整数条数，不会再次用下限取整改写。3D、正向力学与导出共用同一有限铰链规定几何；更改输入会使旧达标结论失效。JSON保留目标类型、容差、源输入和搜索报告；旧有配置字段保留。旧的容量初算、压强下限模式与固定尺寸转角搜索仍可用于对照。
+
+示例仅在主动点击后替换逆向草稿。600 µm侧面延伸示例与历史2000 µm / 300 Pa输入必须明确区分；它们都是条件模型检查配置，不会静默替换当前正向结构。原2000 µm例不得仅因压力达标而被重新标成v0.8合格包裹。
+
+有限刚性面板相互之间与底板在展开 / 包裹终点的碰撞也纳入检查；碰撞涉及的整侧不报告有效压强，仍保留材料与力矩诊断。该检查不涵盖整个折叠过程或实际金属条带。详见 [等压设计说明](docs/equal-pressure-design.md)、[固定铰链几何设计](docs/geometry-first-design.md)、[逆向版图说明](docs/inverse-design.md) 和 [v0.8 模型说明](docs/model-v0.8.md)；历史记录保留为 [v0.7 验证记录](docs/validation-v0.7.md)。
+
+“结构设计”保留常用几何和铰链参数、三维姿态演示、逐节结果及 CSV/JSON 导出；底板、材料和逐铰链覆盖收进次级区域。
+
+“驱动与标定”集中可编辑的自由弯曲记录、参考样品、探针记录和适用条件。设计参数与参考样品分别保存，修改设计铰链长度不会改写参考长度。
+
+默认历史记录：Pd 200 nm / Au 260 nm，假定模量 120/80 GPa，单条宽 15 μm，参考长度 30 μm、并联 9 条、参考自由角约 180°。独立探针记录为 60 μN、258 μm 垂直力臂；它们不是已经验证的同状态联合标定。条件理论预测约 43.1036 μN，不能暗中调节材料 EI 使其等于 60 μN。记录标签、来源、驱动态及自由边界状态可编辑和导出。
+
+## 本地运行
+
+```bash
+npm ci
+npm test
+npm run build
+npm run dev
+```
+
+React / TypeScript / Vite / Three.js / React Three Fiber / Zustand / Vitest。内部全部使用 SI 单位；界面显示 nm、μm、GPa、μN、nN·m、Pa。
+
+## 发布与范围
+
+此仓库保留源码和测试；`npm run build` 生成 `dist/`，静态产物发布到独立公开仓库 `czechiuu/cell-wrapping-actuator-simulator-pages`。源码提交、测试和网页上线应分别核验。[v0.7冻结源码说明](https://github.com/czechiuu/cell-wrapping-actuator-simulator/blob/917c536fc8612db07127807db4f816e97f38bfbd/README.md)对应固定提交，避免将历史结果链接到变化中的main。冻结v0.7入口保留独立HTML、JavaScript、CSS、Worker和导出行为；v0.8不覆盖冻结目录。
+
+模型仍要求细长、完美黏结、材料小应变线弹性和集总常曲率近似。大转角不等于材料可以承受任意大应变。若端力导致曲率明显不均匀，应采用连续梁或实验验证。当前默认示意姿态可能不满足接触约束；动画终点不代表自然稳定包裹状态，失效显示不是程序应以零或正数掩盖的问题。
+
+历史 v0.3 说明仅用于追溯；当前坐标、力臂和接触判定以 v0.4 文档与测试为准。

@@ -1,26 +1,26 @@
 {
-  "version": "0.8.0",
-  "sourceCommit": "7bb5108fc77cd65e4fdd18cbfd094cf580591433",
-  "sourceTree": "d40339e2b5aaabd75fa6eed11b8913bb87440d10",
+  "version": "0.8.1",
+  "sourceCommit": "25e2346647f4e3b1df2ce286f1049cde137b0d9d",
+  "sourceTree": "f3ab198e35778b3d3e96731eb840bfab148c7695",
   "tests": {
-    "passed": 326,
-    "files": 39
+    "passed": 381,
+    "files": 42
   },
   "buildPassed": true,
   "assets": [
     {
-      "path": "assets/designSearchWorker-BSn4zBRt.js",
-      "sha": "94098b72ab97ca1267f9432a124036bf99c47080",
-      "sha256": "5d627df6f44bd7d9933cdcad704e6f2c718a785843eb54ffcc994b84c9f89ce1",
-      "size": 93501,
+      "path": "assets/designSearchWorker-325_vEQS.js",
+      "sha": "feb2901c4d09db1698a5ddca3c46bf49d142474f",
+      "sha256": "2ba4fb1918325ffc1d7402b4b371bc6a56ed0b0f99ce7bf518c104acc1b63b05",
+      "size": 101620,
       "mode": "100644",
       "type": "blob"
     },
     {
-      "path": "assets/index-CNRjeh_i.js",
-      "sha": "9f0af4375011af629dbd7ed4126b8a8bf97e8ab2",
-      "sha256": "1b07c546637dd55682ab1f9582b02e34bb026515eefc5103a4ce8c13ee456a05",
-      "size": 1298270,
+      "path": "assets/index-Bmvf-vgQ.js",
+      "sha": "0e2886d221216cc0fdf3e77f329f7dde9fa7ee78",
+      "sha256": "ec49b21d19c7b75642f18d62a3294c652ce4d9f79f398635156cd21fea04dfeb",
+      "size": 1321142,
       "mode": "100644",
       "type": "blob"
     },
@@ -34,9 +34,9 @@
     },
     {
       "path": "index.html",
-      "sha": "192c78f0d19b1cf6bc72a6dc7e11c1597c1e6638",
-      "sha256": "0f88888e8245365be4b05b39eaaa34b34dc275faa0d4ba7832df12a0479ea155",
-      "size": 1019,
+      "sha": "2b91cf13f38e5dd1a88a3427f0bb50dd3e6cad03",
+      "sha256": "3a25115e0e68a8f6922a21d70f7a3d9d41b7e27490e6ad4749c0ded7be0eb619",
+      "size": 1021,
       "mode": "100644",
       "type": "blob"
     }
@@ -49,5 +49,5 @@
     "tree": "1f24442f3897e0144c53aba74c8c773ca8b95a4b",
     "method": "Exact original Git tree reused without rebuilding"
   },
-  "frozenReleaseSha256": "68c95ce093e6ea1be0715667d2d46653e16989d971175f8b038b0390f5c1b247"
+  "frozenReleaseSha256": "5b837687fe6f6d43e8c4ff8ca9dee6276f8deb8c7c6bc6054706348960ba98d4"
 }

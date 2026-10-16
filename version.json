@@ -1,40 +1,53 @@
 {
-  "version": "0.7.0",
-  "sourceCommit": "917c536fc8612db07127807db4f816e97f38bfbd",
-  "testsPassed": 284,
-  "testFilesPassed": 35,
-  "model": "finite-constant-curvature-prescribed-pose",
-  "calibration": "historical-provisional-v1",
-  "defaultPressureToleranceFraction": 0.05,
-  "features": [
-    "equal-pressure-geometry-and-integer-search",
-    "per-panel-pressure-tolerance",
-    "preserve-candidate-integer-counts",
-    "fixed-hinge-geometry-search",
-    "panel-and-base-sizing",
-    "adjacent-support-width-checks",
-    "rigid-panel-endpoint-collision-checks",
-    "shared-prescribed-geometry",
-    "stale-design-invalidation",
-    "background-search-worker",
-    "bounded-parallel-count-1-to-1000"
-  ],
-  "buildAssets": [
+  "version": "0.8.0",
+  "sourceCommit": "7bb5108fc77cd65e4fdd18cbfd094cf580591433",
+  "sourceTree": "d40339e2b5aaabd75fa6eed11b8913bb87440d10",
+  "tests": {
+    "passed": 326,
+    "files": 39
+  },
+  "buildPassed": true,
+  "assets": [
     {
-      "path": "assets/designSearchWorker-DR8GH-iT.js",
-      "sha256": "b866acb2b349502d926bc53f2c48b970339114250db84de04bdb724695dd7e89"
+      "path": "assets/designSearchWorker-BSn4zBRt.js",
+      "sha": "94098b72ab97ca1267f9432a124036bf99c47080",
+      "sha256": "5d627df6f44bd7d9933cdcad704e6f2c718a785843eb54ffcc994b84c9f89ce1",
+      "size": 93501,
+      "mode": "100644",
+      "type": "blob"
     },
     {
-      "path": "assets/index-2QlhDtPU.js",
-      "sha256": "ec18b886d512f52386614d55363e86af2348217ccdefcf8ad128cb1ce6f78f06"
+      "path": "assets/index-CNRjeh_i.js",
+      "sha": "9f0af4375011af629dbd7ed4126b8a8bf97e8ab2",
+      "sha256": "1b07c546637dd55682ab1f9582b02e34bb026515eefc5103a4ce8c13ee456a05",
+      "size": 1298270,
+      "mode": "100644",
+      "type": "blob"
     },
     {
       "path": "assets/index-CdC_0n47.css",
-      "sha256": "575e5d9dadfb73f3a00fc01a426bc96a47b3fb749f1d04281d8bc28981684999"
+      "sha": "d52198d1eea034e5552cbd48273f9279e1183535",
+      "sha256": "575e5d9dadfb73f3a00fc01a426bc96a47b3fb749f1d04281d8bc28981684999",
+      "size": 20118,
+      "mode": "100644",
+      "type": "blob"
     },
     {
       "path": "index.html",
-      "sha256": "a29c13d4cb868c8332a88642ff9f398002a341ade9cd758425c38e2e436149e4"
+      "sha": "192c78f0d19b1cf6bc72a6dc7e11c1597c1e6638",
+      "sha256": "0f88888e8245365be4b05b39eaaa34b34dc275faa0d4ba7832df12a0479ea155",
+      "size": 1019,
+      "mode": "100644",
+      "type": "blob"
     }
-  ]
+  ],
+  "archive": {
+    "version": "0.7.0",
+    "path": "versions/v0.7/",
+    "sourceCommit": "917c536fc8612db07127807db4f816e97f38bfbd",
+    "pagesCommit": "a28c430b568d6b8afacdffdb7904653966d8e12b",
+    "tree": "1f24442f3897e0144c53aba74c8c773ca8b95a4b",
+    "method": "Exact original Git tree reused without rebuilding"
+  },
+  "frozenReleaseSha256": "68c95ce093e6ea1be0715667d2d46653e16989d971175f8b038b0390f5c1b247"
 }

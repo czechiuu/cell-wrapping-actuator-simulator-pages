@@ -1,0 +1,40 @@
+{
+  "version": "0.7.0",
+  "sourceCommit": "917c536fc8612db07127807db4f816e97f38bfbd",
+  "testsPassed": 284,
+  "testFilesPassed": 35,
+  "model": "finite-constant-curvature-prescribed-pose",
+  "calibration": "historical-provisional-v1",
+  "defaultPressureToleranceFraction": 0.05,
+  "features": [
+    "equal-pressure-geometry-and-integer-search",
+    "per-panel-pressure-tolerance",
+    "preserve-candidate-integer-counts",
+    "fixed-hinge-geometry-search",
+    "panel-and-base-sizing",
+    "adjacent-support-width-checks",
+    "rigid-panel-endpoint-collision-checks",
+    "shared-prescribed-geometry",
+    "stale-design-invalidation",
+    "background-search-worker",
+    "bounded-parallel-count-1-to-1000"
+  ],
+  "buildAssets": [
+    {
+      "path": "assets/designSearchWorker-DR8GH-iT.js",
+      "sha256": "b866acb2b349502d926bc53f2c48b970339114250db84de04bdb724695dd7e89"
+    },
+    {
+      "path": "assets/index-2QlhDtPU.js",
+      "sha256": "ec18b886d512f52386614d55363e86af2348217ccdefcf8ad128cb1ce6f78f06"
+    },
+    {
+      "path": "assets/index-CdC_0n47.css",
+      "sha256": "575e5d9dadfb73f3a00fc01a426bc96a47b3fb749f1d04281d8bc28981684999"
+    },
+    {
+      "path": "index.html",
+      "sha256": "a29c13d4cb868c8332a88642ff9f398002a341ade9cd758425c38e2e436149e4"
+    }
+  ]
+}
